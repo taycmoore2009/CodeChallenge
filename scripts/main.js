@@ -3,7 +3,8 @@
         events: {
             "change .numOnPage": "changePageSize",
             "click .previousPage": "previousPage",
-            "click .nextPage": "nextPage"
+            "click .nextPage": "nextPage",
+            "click [data-link]": "showIssue"
         },
 
         /* change the number of items on the screen */
@@ -37,6 +38,11 @@
         
         },
 
+        /* load page to issue selected */
+        showIssue: function(e){
+            window.location.href = "issueView.html?issue="+ $(e.currentTarget).data("link");
+        },
+
         /* render new items on the screen */
         render: function(){
 
@@ -50,7 +56,7 @@
                     var html = "";
                     $(list).each(function(){
                         var desc = this.body.substr(0, 140);
-                        html += "<div class='issueItem' data-link='viewIssue?issue="+ this.number +"'>"+
+                        html += "<div class='issueItem' data-link='"+ this.number +"'>"+
                                     "<div class='issueItemUser'><img src='"+ this.user.avatar_url +"' /><span>"+ this.user.login +"</span></div>"+
                                     "<div class='issueItemContent'>"+
                                         "<div class='issueItemTitle'>"+ this.title +"<span>#"+ this.number +"</span></div>"+
