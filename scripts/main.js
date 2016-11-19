@@ -11,7 +11,8 @@
                     /* create html */
                     var html = "";
                     $(list).each(function(){
-                        html += "<div class='issueItem'>"+
+                        var desc = this.body.substr(0, 140);
+                        html += "<div class='issueItem' data-link='viewIssue?issue="+ this.number +"'>"+
                                     "<div class='issueItemUser'><img src='"+ this.user.avatar_url +"' /><span>"+ this.user.login +"</span></div>"+
                                     "<div class='issueItemContent'>"+
                                         "<div class='issueItemTitle'>"+ this.title +"<span>#"+ this.number +"</span></div>"+
@@ -24,7 +25,7 @@
                             html += "<span class='noLabels'>No Labels</span>";
                         }
                         html +=         "</div>"+    
-                                        "<div class='issueItemShortDesc'>"+ this.body.substring(0, 140) +"</div>"+
+                                        "<div class='issueItemShortDesc'>"+ desc.substr(0, Math.min(desc.length, desc.lastIndexOf(" "))) +"</div>"+
                                     "</div>"+
                                 "</div>";
                     });
