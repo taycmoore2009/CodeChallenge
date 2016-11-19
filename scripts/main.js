@@ -4,7 +4,7 @@
             "change .numOnPage": "changePageSize",
             "click .previousPage": "previousPage",
             "click .nextPage": "nextPage",
-            "click [data-link]": "showIssue"
+            "click [data-link]": "openLink"
         },
 
         /* change the number of items on the screen */
@@ -39,8 +39,8 @@
         },
 
         /* load page to issue selected */
-        showIssue: function(e){
-            window.location.href = "issueView.html?issue="+ $(e.currentTarget).data("link");
+        openLink: function(e){
+            window.open($(e.currentTarget).data("link"));
         },
 
         /* render new items on the screen */
@@ -56,10 +56,10 @@
                     var html = "";
                     $(list).each(function(){
                         var desc = this.body.substr(0, 140);
-                        html += "<div class='issueItem' data-link='"+ this.number +"'>"+
-                                    "<div class='issueItemUser'><img src='"+ this.user.avatar_url +"' /><span>"+ this.user.login +"</span></div>"+
-                                    "<div class='issueItemContent'>"+
-                                        "<div class='issueItemTitle'>"+ this.title +"<span>#"+ this.number +"</span></div>"+
+                        html += "<div class='issueItem'>"+
+                                    "<div class='issueItemUser' data-link='"+ this.user.html_url +"'><img src='"+ this.user.avatar_url +"' /><span>@"+ this.user.login +"</span></div>"+
+                                    "<div class='issueItemContent' data-link='issueView.html?issue="+ this.number +"'>"+
+                                        "<div class='issueItemTitle'>"+ this.title +"</div>"+ " <span>Issue #"+ this.number +"</span>"+
                                         "<div class='issueItemLabels'>";
                         if(this.labels.length > 0){
                             $(this.labels).each(function(){
