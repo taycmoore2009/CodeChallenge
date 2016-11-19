@@ -1,5 +1,43 @@
 (function(){
     var GitHubMainView = Backbone.View.extend({
+        events: {
+            "change .numOnPage": "changePageSize",
+            "click .previousPage": "previousPage",
+            "click .nextPage": "nextPage"
+        },
+
+        /* change the number of items on the screen */
+        changePageSize: function(e){
+            this.model.set("pageSize", $(e.currentTarget).val());
+            this.render();
+        },
+
+        /* go to previous page */
+        previousPage: function(e){
+            var page = this.model.get("page") - 1;
+            if(page > 0){
+                this.model.set("page", page)
+                if(page <= 1){
+                    $(e.currentTarget).attr("disabled", true);
+                }
+                $(".nextPage").removeAttr("disabled");
+                this.render();
+            } else {
+                $(e.currentTarget).attr("disabled", true);
+            }
+        },
+
+        /* go to next page */
+        nextPage: function(e){
+            var page = this.model.get("page");
+            
+            this.model.set("page", page + 1)
+            $(".previousPage").removeAttr("disabled");
+            this.render();
+        
+        },
+
+        /* render new items on the screen */
         render: function(){
 
             /* get issue list from github with params */
@@ -7,7 +45,7 @@
 
                 /* render HTML */
                 /* -- Needs to be changed to use _.templates -- */
-                this.$el.html(function(){
+                this.$el.find(".githubList").html(function(){
                     /* create html */
                     var html = "";
                     $(list).each(function(){
@@ -30,7 +68,12 @@
                                 "</div>";
                     });
                     return html;
-                })
+                });
+
+                /* check if there is enough items for a next page */
+                if(list.length < this.model.get("pageSize")){
+                    $(".nextPage").attr("disabled", true);
+                }
             }.bind(this));
         },
     });
@@ -39,7 +82,7 @@
         /* create backbone model and view */
         var model = Backbone.Model.extend(),
             gitHubMainView = new GitHubMainView({
-                el: $(".githubList"),
+                el: $("body"),
                 model: new model({pageSize: 25, page: 1})
             });
         

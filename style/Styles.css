@@ -1,6 +1,13 @@
 h1 {
     text-align: center;
 }
+
+/* paging controls */
+[paging-controls] {
+    width: 90%;
+    margin: 3px 5%;
+}
+
 /* Issue Item container */
 .issueItem {
     display: inline-block;
