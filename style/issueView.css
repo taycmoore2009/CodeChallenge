@@ -1,0 +1,96 @@
+
+h1 {
+    text-align: center;
+}
+
+/* Issue view */
+.issueView {
+    width: 100%;
+}
+
+.issueView .issueItem {
+    border: 1px solid #000;
+    border-radius: 5px;
+    float: left;
+    margin-bottom: 5px;
+    background: #fafafb;
+}
+
+.issueView .issueItem > div {
+    float: left;
+}
+
+.issueView .issueItem .issueItemUser {
+    width: 120px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.issueView .issueItem .issueItemUser img {
+    width: 100%;
+}
+.issueView .issueItem .issueItemUser span {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.issueView .issueItem .issueItemContent {
+    width: calc(100% - 131px);
+}
+
+.issueView .issueItem .issueItemContent .issueItemLabels {
+    margin: 5px;
+}
+
+.issueView .issueItem .issueItemContent .issueItemLabels span:not(.noLabels) {
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #FFF;
+    padding: 1px 6px;
+    margin: 5px;
+}
+
+.issueView .issueItem .issueItemContent .issueItemDesc {
+    padding:10px;
+    font-size: 1.2em;
+}
+
+/* comments section */
+.comments {
+    float: left;
+    width:98%;
+    padding-left: 2%;
+}
+
+.comments .comment {
+    width: 100%;
+    margin: 10px 0;
+    float: left;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #fafafb;
+}
+
+.comments .comment > div {
+    float: left;
+}
+
+.comments .comment .commentUser {
+    width: 120px;
+    padding: 5px;
+    border-right: 1px solid #000;
+}
+
+.comments .comment .commentUser img {
+    width: 100%;
+}
+
+.comments .comment .commentBody {
+    width: calc(100% - 141px);
+    padding: 5px;
+}
+
+.comments .comment .commentBody .commentBodyHeader span:not(:first-of-type){
+    color: #818181;
+    font-size: 11px;
+}
