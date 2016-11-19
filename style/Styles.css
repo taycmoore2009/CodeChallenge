@@ -1,0 +1,64 @@
+body {
+    background: #222;
+}
+h1 {
+    color: #FFF;
+    text-align: center;
+}
+/* Issue Item container */
+.issueItem {
+    display: inline-block;
+    width: 90%;
+    height: 130px;
+    margin: 10px 5%;
+    padding: 0 5px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background: #eee;
+}
+
+.issueItem > div {
+    float: left;
+    height: 120px;
+}
+
+/* User box */
+.issueItem .issueItemUser {
+    width: 120px;
+    text-align: center;
+    margin: 5px;
+}
+
+.issueItem .issueItemUser img {
+    height: calc(100% - 34px);
+    position: relative;
+}
+
+.issueItem .issueItemUser span {
+    width: 100%;
+    display: inline-block;
+}
+
+/* Issue Content */
+.issueItem .issueItemContent {
+    border-left: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.issueItem .issueItemContent .issueItemTitle {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.issueItem .issueItemContent .issueItemLabels {
+    margin: 5px;
+}
+
+.issueItem .issueItemContent .issueItemLabels span:not(.noLabels) {
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #FFF;
+    padding: 1px 6px;
+    margin: 5px;
+}
